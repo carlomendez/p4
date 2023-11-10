@@ -27,15 +27,29 @@ const Nav = () => {
             height={30}
             className="object-contain"
             />
-            <p className="logo_text">Books</p>
+            <p className="logo_text">NICER CAVES</p>
         </Link>
+        {/* {session?.user ?  (
+                <div className="flex gap-3 md:gap-5">
+                    <Link href="/last-30-days" className="black_btn">
+                        Last 30 Days
+                    </Link>
+
+                    <Link href="/sample-status" className="black_btn">
+                        Sample Status
+                    </Link>
+                </div>
+            ) : (
+                <>
+                </>
+            ) } */}
         {/* Desktop */}
         <div className="sm:flex hidden">
             {session?.user ?  (
                 <div className="flex gap-3 md:gap-5">
-                    <Link href="/create-post" className="black_btn">
+                    {/* <Link href="/create-post" className="black_btn">
                         Create New Post
-                    </Link>
+                    </Link> */}
 
                     <button type="button" onClick={signOut} className="outline_btn">
                         Sign Out
@@ -91,13 +105,13 @@ const Nav = () => {
                                 My Profile
                             </Link>
 
-                            <Link 
+                            {/* <Link 
                                 href="/create-post"
                                 className="dropdown_link"
                                 onClick={()=> setToggleDropdown(false)}
                             >
                                 Create Post
-                            </Link>
+                            </Link> */}
 
                             <button
                                 type="button"
