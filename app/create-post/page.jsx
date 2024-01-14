@@ -49,8 +49,8 @@
 
 "use client";
 
-// import dynamic from 'next/dynamic'
-// const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import dynamic from 'next/dynamic'
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import Image from "next/image";
 // import styles from "./writePage.module.css";
 // import styles from "@/app/ui/dashboard/products/singleProduct/singleProduct.module.css";
@@ -64,7 +64,7 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { app } from "@/utils/firebase";
-import ReactQuill from "react-quill";
+// import ReactQuill from "react-quill";
 
 const CreatePost = () => {
   
