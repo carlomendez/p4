@@ -1,5 +1,5 @@
-import Pagination from "@components/pagination";
-import Search from "@components/search";
+import Pagination from "@components/Pagination";
+import Search from "@components/Search";
 import { fetchArticles } from "@lib/data";
 import Link from "next/link";
 import Image from "next/image";
