@@ -18,8 +18,8 @@ const handler = NextAuth({
                 if (profile?.email == "carlorielmendez@gmail.com") {
                     userRole = "editor";
                   }
-
-                return { id: profile.sub, username: profile.username, email: profile.email, image: profile.image, role: userRole}
+                console.log("Profile Google: ", profile);
+                return { id: profile.sub, username: profile.username, email: profile.email, image: profile.picture, role: userRole}
               },
         })
     ], 
@@ -48,7 +48,7 @@ const handler = NextAuth({
                     await User.create({
                         email: profile.email,
                         username: profile.name.replace(/\s/g, "").toLowerCase(),
-                        image: profile.image
+                        image: profile.picture
                     })
                 }
                 return true;

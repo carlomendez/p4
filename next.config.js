@@ -2,9 +2,10 @@
 const nextConfig = {
     experimental: {
       serverComponentsExternalPackages: ["mongoose"],
+      serverActions: true,
     },
     images: {
-      domains: ['lh3.googleusercontent.com'],
+      domains: ['lh3.googleusercontent.com', "firebasestorage.googleapis.com"],
     },
     webpack(config) {
       config.experiments = {

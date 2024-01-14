@@ -31,6 +31,6 @@ const RecordSchema = new Schema(
       { timestamps: true }
     );
 
-const Record = models.Record || model("User", RecordSchema);
+const Record = models.Record || model("Record", RecordSchema);
 
 export default Record;

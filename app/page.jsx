@@ -106,7 +106,7 @@ const Main = () => {
         <Dashboard2 />
       </section>
     </CustomTabPanel>
-    <CustomTabPanel value={value} index={4}>
+    <CustomTabPanel value={value} index={3}>
       <section className="w-full">
           <h1 className="text-2xl text-left mt-6">
               Features
