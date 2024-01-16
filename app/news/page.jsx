@@ -18,30 +18,30 @@ const News = async ({ searchParams }) => {
           <br className="max-md:hidden"/>
       </h1>   
     </section>
-          <section>
+          <section className="w-full">
           <Search placeholder="Search for an article..." />
-          <div  style={{margin: "50px 0px"}}>
+          <div className='mt-16 prompt_layout'>
              <div >
                {articles.map((article) => (
-                <div  key={article.id}>
+                <div className="mb-12" key={article.id}>
                 {article.img && (
                   <div className="flex-1 h-80 relative" >
-                    <Image src={article.img || dummyPic} alt="" fill/>
+                    <Link href={`/news/${article.id}`}>
+                      <Image src={article.img || dummyPic} alt="" fill className="object-cover"/>
+                    </Link>
                   </div>
                 )}
                 <div >
                   <div >
                     <span >
-                      {article.createdAt.toString().substring(0, 10)}
+                      {article.createdAt.toString().substring(0, 15)}
                     </span>
                   </div>
-                  <Link href={`/news/${article.id}`}>
-                    <h1>{article.title}</h1>
-                  </Link>
-                  <div  dangerouslySetInnerHTML={{ __html: article?.desc.substring(0,60) }}/>
-                  <Link href={`/news/${article.id}`} >
-                    Read More
-                  </Link>
+                  <div className='flex flex-col'>
+                    <Link href={`/news/${article.id}`}>
+                      <h1 className='font-satoshi font-semibold text-gray-900'>{article.title}</h1>
+                    </Link>
+                  </div>
                 </div>
               </div>
               ))}

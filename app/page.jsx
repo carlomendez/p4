@@ -82,7 +82,6 @@ const Main = () => {
         <Tab label="Home" {...a11yProps(0)} />
         <Tab label="Last 30 Days" {...a11yProps(1)} />
         <Tab label="Sample Status" {...a11yProps(2)} />
-        <Tab label="News" {...a11yProps(3)} />
       </Tabs>
     </Box>
     <CustomTabPanel value={value} index={0}>
@@ -104,22 +103,6 @@ const Main = () => {
     <CustomTabPanel value={value} index={2}>
       <section className="w-full flex-center flex-col">
         <Dashboard2 />
-      </section>
-    </CustomTabPanel>
-    <CustomTabPanel value={value} index={3}>
-      <section className="w-full">
-          <h1 className="text-2xl text-left mt-6">
-              Features
-              <br className="max-md:hidden"/>
-          </h1>   
-          <FeatureFeed />
-      </section>
-      <section className="w-full">
-          <h1 className="text-2xl text-left mt-6">
-              News Releases
-              <br className="max-md:hidden"/>
-          </h1>   
-          <NewsFeed />
       </section>
     </CustomTabPanel>
     </>  
