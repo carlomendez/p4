@@ -55,8 +55,8 @@ const Nav = () => {
         </div>
         {session?.user.role === "editor" ?  (
                 <div className="flex gap-3 md:gap-5">
-                    <Link href="/create-post" className="black_btn">
-                        Create Post
+                    <Link href="/article-dashboard" className="black_btn">
+                        Manage Post
                     </Link>
                     {/* 
                     <Link href="/sample-status" className="black_btn">

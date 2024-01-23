@@ -1,39 +1,46 @@
 "use client";
 import { useEffect, useState} from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { useSession } from "next-auth/react";
 
-import Form from '@components/Form';
+import Form from '@components/EditForm';
 
 const EditPost = () => {
     const router = useRouter();
+    const { data: session, status } = useSession();
     const searchParams = useSearchParams();
-    const postId = searchParams.get('id');
+    const articleId = searchParams.get('id');
     const [submitting, setSubmitting] = useState(false);
-    const [post, setPost] = useState({
-        post:'',
-        tag:''
+    const [article, setArticle] = useState({
+        title:'',
+        desc:'',
+        author:''
     })
+    
+    const [desc, setDesc] = useState("");
     useEffect(()=>{
-        const getPostDetails = async () => {
-            const response = await fetch(`api/post/${postId}`)
+        const getArticleDetails = async () => {
+            const response = await fetch(`api/post/${articleId}`)
             const data = await response.json();
-            setPost({
-                post:data.post,
-                tag: data.tag
+            setArticle({
+                title:data.title,
+                desc,
+                author: data.author
             });
         }
-        if (postId) getPostDetails();
-    }, [postId]);
-    const updatePost = async (e) => {
+        if (articleId) getArticleDetails();
+    }, [articleId]);
+    const updateArticle = async (e) => {
         e.preventDefault();
         setSubmitting(true);
-        if(!postId) return alert('Post ID not found');
+        if(!articleId) return alert('Article ID not found');
         try{
-            const response = await fetch(`api/post/${postId}`, {
+            const response = await fetch(`api/post/${articleId}`, {
                 method: 'PATCH',
                 body: JSON.stringify({
-                    post:post.post,
-                    tag:post.tag
+                    title:data.title,
+                    desc,
+                    author: data.author
                 })
             })
             if(response.ok) {
@@ -45,13 +52,26 @@ const EditPost = () => {
             setSubmitting(false);
         }
     }
+    if (status === "loading") {
+        return <p>Loading...</p>
+      }
+    
+      if (status === "unauthenticated") {
+        return <p>Access Denied</p>
+      }
+      
+      if(session?.user.role === "user"){
+        return <p>Access Denied</p>
+      }  
   return (
     <Form
         type="Edit"
-        post={post}
-        setPost={setPost}
+        article={article}
+        setArticle={setArticle}
+        desc={desc}
+        setDesc={setDesc}
         submitting={submitting}
-        handleSubmit={updatePost}
+        handleSubmit={updateArticle}
     />
   )
 }

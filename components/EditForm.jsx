@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link";
 // import ReactQuill from "react-quill";
 import dynamic from 'next/dynamic'
@@ -11,11 +12,13 @@ import {
 } from "firebase/storage";
 import { app } from "@/utils/firebase";
 import { useEffect, useState } from "react";
+import { updateArticle } from "@/lib/actions";
 
-const Form = ({type, article, setArticle, desc, setDesc, submitting, handleSubmit}) => {
+const EditForm = ({id, title, desc, author}) => {
   
   const [file, setFile] = useState(null);
   const [media, setMedia] = useState("");
+  const [value, setValue] = useState(desc);
 
   var toolbarOptions = [
     ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
@@ -78,41 +81,31 @@ const Form = ({type, article, setArticle, desc, setDesc, submitting, handleSubmi
 
   return (
     <section className="w-full max-w-full flex-start flex-col">
-      <h1 className="head_text text-left"><span className="blue_gradient">{type} Post</span></h1>
+      <h1 className="head_text text-left"><span className="blue_gradient">Edit Post</span></h1>
       <p className="desc text-left max-w-md">
-        {type} a post by providing a title, author, a picture, and the content of the article inside the formatted field. Play around with the functionalities to figure out the best way of publishing the article.
+        Update a post with the following available fields.
       </p>
       <p className="desc text-left max-w-md">
-        As of this moment, only one image could be uploaded at a time. Make sure to properly select the right image the first time. Contact an admin in case there is a need to replace the image.
+        As of this moment, editing the image requires admin request. Contact an admin in case there is a need to replace the image.
       </p>
       <br></br>
-      <div>
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><label htmlFor="image">Select Image</label></button>
-          <textarea
-              type="text"
-              name="img"
-              id="img"
-              value={media.toString()}
-              readOnly
-              placeholder="Image url will show if upload succeeds" 
-              className="form_input"
-          />
-      </div>
       <form
-        onSubmit={handleSubmit}
-        className="mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism" 
+        action={updateArticle}
+        className="mt-10 w-full flex flex-col gap-7 glassmorphism" 
       >
           <label>
+            <input type="hidden" name="id" value={id} />
             <span
               className="font-satoshi font-semibold text-base text-gray-700"  
             >
               Your Article
             </span>
             <textarea 
-              value={article.title} 
-              onChange={(e)=> setArticle({ ...article, title: e.target.value})} 
-              placeholder="Write your post here..." 
-              required
+              value={title} 
+              // onChange={(e)=> setArticle({ ...article, title: e.target.value})} 
+              name = "title"
+              // placeholder={article.title}
+              placeholder={title}
               className="form_input"
             />
           </label>
@@ -123,10 +116,11 @@ const Form = ({type, article, setArticle, desc, setDesc, submitting, handleSubmi
               Author
             </span>
             <input 
-              value={article.author} 
-              onChange={(e)=> setArticle({ ...article, author: e.target.value})} 
-              placeholder="Author" 
-              required
+              value={author} 
+              // onChange={(e)=> setArticle({ ...article, author: e.target.value})} 
+              name="author"
+              // placeholder={article.author}
+              placeholder={author}
               className="form_input"
             />
           </label>
@@ -138,42 +132,29 @@ const Form = ({type, article, setArticle, desc, setDesc, submitting, handleSubmi
             </span>
             <ReactQuill
               modules={module}
+              // name="desc"
               theme="snow"
-              value={desc}
-              onChange={setDesc}
-              placeholder="Tell your story..."
+              value={value}
+              onChange={setValue}
+              // placeholder={desc}
             />
           </label>
-          {/* <textarea
+          <textarea
              name="desc"
              id="desc"
              value={value}
+             onChange={setValue}
              style={{ display: "none" }}
-          ></textarea> */}
-          <input
-              type="file"
-              id="image"
-              onChange={(e) => setFile(e.target.files[0])}
-              style={{ display: "none" }}
-          />
-          {/* <input
-              type="text"
-              name="img"
-              id="img"
-              value={media.toString()}
-              onChange={(e)=> setArticle({ ...article, img: e.target.value})}
-              style={{ display: "none" }}
-          /> */}
+          ></textarea>
           <div className="flex-end mx-3 mb-5 gap-4">
-            <Link href="/" className="text-gray-500 text-sm">
+            <Link href="/article-dashboard" className="text-gray-500 text-sm">
               Cancel
             </Link>
             <button
               type="submit"
-              disabled={submitting}
               className="px-5 py-1.5 bg-primary-orange text-sm rounded-full text-white"
             >
-              {submitting ? `${type}...` : type}
+              Edit
             </button>
           </div>
       </form>
@@ -181,4 +162,4 @@ const Form = ({type, article, setArticle, desc, setDesc, submitting, handleSubmi
   )
 }
 
-export default Form
+export default EditForm

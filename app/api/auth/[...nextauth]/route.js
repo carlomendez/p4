@@ -3,6 +3,8 @@ import GoogleProvider from "next-auth/providers/google";
 import User from "@models/user";
 import { connectToDB } from "@utils/database";
 
+
+
 const handler = NextAuth({
     providers:[
         GoogleProvider({
@@ -11,10 +13,19 @@ const handler = NextAuth({
             profile(profile) {
                 //add as many admins as you can here
                 let userRole = "user";
+                // console.log(profile.email)
+                // const fetchedUserViaEmail = await fetchUserByEmail(profile?.email);
+                // console.log(fetchedUserViaEmail.role);
+                // if (fetchedUserViaEmail?.role == "admin") {
+                //     userRole = "admin";
+                //   }
+                // if (fetchedUserViaEmail?.role == "editor") {
+                //     userRole = "editor";
+                //   }
                 if (profile?.email == "cgmendez1@up.edu.ph") {
                     userRole = "admin";
                   }
-                //add as many editors as you can here
+                // add as many editors as you can here
                 if (profile?.email == "carlorielmendez@gmail.com") {
                     userRole = "editor";
                   }

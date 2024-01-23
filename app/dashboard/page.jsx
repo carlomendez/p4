@@ -1,5 +1,21 @@
+"use client"
+
+import { useSession, getSession } from "next-auth/react"
 
 const Dashboard = () => {
+  const { data: session, status } = useSession()
+
+  if (status === "loading") {
+    return <p>Loading...</p>
+  }
+
+  if (status === "unauthenticated") {
+    return <p>Access Denied</p>
+  }
+  
+  if(session?.user.role != "admin"){
+    return <p>Access Denied</p>
+  }
   return (
     <section className="w-full flex-center flex-col">
         <h1 className="head_text text-center">

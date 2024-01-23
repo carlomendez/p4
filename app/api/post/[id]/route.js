@@ -1,28 +1,37 @@
 import { connectToDB } from "@utils/database";
-import Post from "@models/post";
+import Article from "@models/article";
 
 export const GET = async (request, {params}) => {
     try{
         await connectToDB();
-        const post = await Post.findById(params.id).populate('creator');
-        if(!post) return new Response("prompt not found", {status:404});
-        return new Response(JSON.stringify(post), {status: 200});
+        const article = await Article.findById(params.id).populate('creator');
+        if(!article) return new Response("article not found", {status:404});
+        return new Response(JSON.stringify(article), {status: 200});
         
     } catch (error){
-        return new Response('Failed to fetch all posts', {status: 500});
+        return new Response('Failed to fetch article', {status: 500});
     }
 };
 
 export const PATCH = async (request, {params}) => {
-    const {post, tag} = await request.json();
+    const {
+        title, 
+        desc, 
+        author, 
+        // creator, 
+        // img
+    } = await request.json();
     try{
         await connectToDB();
-        const existingPost = await Post.findById(params.id);
-        if(!existingPost) return new Response("prompt not found", {status:404});
-        existingPost.post = post;
-        existingPost.tag = tag;
-        await existingPost.save();
-        return new Response(JSON.stringify(existingPost), {status: 200});
+        const existingArticle = await Article.findById(params.id);
+        if(!existingArticle) return new Response("article not found", {status:404});
+        existingArticle.title = title;
+        existingArticle.desc = desc;
+        existingArticle.author = author;
+        // existingArticle.creator = creator;
+        // existingArticle.img = img;
+        await existingArticle.save();
+        return new Response(JSON.stringify(existingArticle), {status: 200});
         
     } catch (error){
         return new Response('Failed to update the post', {status: 500});
@@ -32,10 +41,10 @@ export const PATCH = async (request, {params}) => {
 export const DELETE = async (request, {params}) => {
     try{
         await connectToDB();
-        await Post.findByIdAndRemove(params.id);
-        return new Response("Post deleted successfully", {status: 200});
+        await Article.findByIdAndRemove(params.id);
+        return new Response("Article deleted successfully", {status: 200});
         
     } catch (error){
-        return new Response('Failed to delete the post', {status: 500});
+        return new Response('Failed to delete the article', {status: 500});
     }
 };
