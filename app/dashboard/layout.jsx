@@ -1,6 +1,6 @@
 
 import AuthChecker from "@components/AuthChecker"
-import Sidebar from "@components/sidebar/sidebar";
+import Sidebar from "@components/sidebar/Sidebar";
 
 export default function DashboardLayout({
     children
