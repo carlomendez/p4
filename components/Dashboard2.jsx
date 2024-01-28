@@ -90,7 +90,7 @@ const Dashboard2 = () => {
         autoComplete="off"
     >
     <section className=''>
-        <div className='container grid grid-cols-6 gap-3 border-b-2'>
+        <div className='grid grid-cols-6 gap-3 border-b-2'>
             <div className='text-xl font-bold col-span-3 border-r-2'></div>
             <div className='text-center'>Filter 1</div>
             <div>
@@ -137,8 +137,8 @@ const Dashboard2 = () => {
         data={posts}
         handleTagClick={() => {}}
       />
-      <div className='inline-flex items-center justify-between w-full'><span><p>Data Table (top 1000)</p></span> <Button>Export</Button></div>
-      <PostCardList3/>
+      {/* <div className='inline-flex items-center justify-between w-full'><span><p>Data Table (top 1000)</p></span> <Button>Export</Button></div>
+      <PostCardList3/> */}
     </section>
     </Box>
   )

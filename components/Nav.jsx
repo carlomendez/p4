@@ -71,11 +71,12 @@ const Nav = () => {
         <div className="sm:flex hidden">
         {session?.user.role === "admin" ?  (
                 <div className="flex gap-3 md:gap-5">
-                    <div className="flex gap-3 md:gap-5">
-                        <Link href="/dashboard" className="black_btn">
-                            Dashboard
-                        </Link>
-                    </div>
+                    <Link href="/article-dashboard" className="black_btn">
+                        Manage Post
+                    </Link>
+                    <Link href="/dashboard" className="black_btn">
+                        Dashboard
+                    </Link>
                 </div>
             ) : (<></>)}
             {session?.user ?  (

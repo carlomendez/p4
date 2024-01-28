@@ -48,7 +48,7 @@ const CreatePost = () => {
     return <p>Access Denied</p>
   }
   
-  if(session?.user.role != "editor"){
+  if(session?.user.role == "user"){
     return <p>Access Denied</p>
   }
   return (

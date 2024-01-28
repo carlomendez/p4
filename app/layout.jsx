@@ -4,7 +4,7 @@ import Provider from '@components/Provider';
 
 export const metadata = {
     title: "NICER CAVES",
-    description: "Discover Books"
+    description: "Cave organisms of the Philippines"
 }
 
 const RootLayout = ({children}) => {

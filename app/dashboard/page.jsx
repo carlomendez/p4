@@ -1,32 +1,87 @@
 "use client"
 
-import { useSession, getSession } from "next-auth/react"
+import Dashboard1 from "@components/Dashboard1";
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import { useState } from "react";
+import Dashboard2 from "@components/Dashboard2";
+import Box from '@mui/material/Box';
+
+function CustomTabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box >
+          {children}
+        </Box>
+      )}
+    </div>
+  );
+}
+
+CustomTabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
 
 const Dashboard = () => {
-  const { data: session, status } = useSession()
 
-  if (status === "loading") {
-    return <p>Loading...</p>
-  }
+  const [value, setValue] = useState(0);
 
-  if (status === "unauthenticated") {
-    return <p>Access Denied</p>
-  }
-  
-  if(session?.user.role != "admin"){
-    return <p>Access Denied</p>
-  }
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
-    <section className="w-full flex-center flex-col">
-        <h1 className="head_text text-center">
-            Books
-            <br className="max-md:hidden"/>
-            <span className="orange_gradient text-center">Recommended</span>
-        </h1>
-        <p className="desc text-center">
-            Books collect book recommendations by users for people to ponder upon.
-        </p>    
-    </section>
+          <Box>
+            <>
+              <Box>
+                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                  <Tab label="Home" {...a11yProps(0)} />
+                  <Tab label="Last 30 Days" {...a11yProps(1)} />
+                  <Tab label="Sample Status" {...a11yProps(2)} />
+                </Tabs>
+              </Box>
+              <CustomTabPanel value={value} index={0}>
+                <section className="flex-center flex-col">
+                    <h1 className="head_text text-center">
+                        NICER CAVES
+                        <br className="max-md:hidden"/>
+                    </h1>
+                    <h2 className="text-2xl font-extrabold">    
+                        <span className="text-center">NICER Program: Center for Assessment Cave Ecosystem (CAVE) in CALABARZON</span>
+                    </h2>
+                </section>
+              </CustomTabPanel>
+              <CustomTabPanel value={value} index={1}>
+                <section className="flex-center flex-col">
+                      <Dashboard1 />
+                </section>
+              </CustomTabPanel>
+              <CustomTabPanel value={value} index={2}>
+                <section className="flex-center flex-col">
+                  <Dashboard2 />
+                </section>
+              </CustomTabPanel>
+            </>  
+          </Box>
   )
 }
 
