@@ -1,39 +1,36 @@
-import { addRecord } from "@lib/actions";
-import styles from "@components/products/addProduct/addProduct.module.css";
+import { addInformation } from "@lib/actions";
+import styles from "@components/entries/addEntry/addEntry.module.css";
 
-const AddRecordPage = () => {
+const AddInformationPage = () => {
   return (
     <div className={styles.container}>
-      <form action={addRecord} className={styles.form}>
-        <input type="text" placeholder="Input ID" name="inputId" required />
-        <label>Input ID code</label>
-        <select name="template" id="template" placeholder="Entity template" required>
-          <option value="QA_sample">QA_sample</option>
-          <option value="Control_sample">Control_sample</option>
-          <option value="Manufacturing">Manufacturing</option>
-          <option value="Materia_sample">Material_sample</option>
-        </select>
-        <label>Entity template</label>
-        <select name="location" id="location" placeholder="Location" required>
-          <option value="Cartago">Cartago</option>
-          <option value="Manchester">Manchester</option>
-          <option value="San Ramon">San Ramon</option>
-          <option value="Bengalore">Bengalore</option>
-          <option value="San Pedro">San Pedro</option>
-        </select>
-        <label>Site Location</label>
-        <input type="date" placeholder="sampledDate" name="sampledDate" />
-        <label>Sampled Date</label>
-        <input type="date" placeholder="recdDate" name="recdDate"/>
-        <label>Recorded Date</label>
-        <input type="date" placeholder="completedDate" name="completedDate" />
-        <label>Completed Date</label>
-        <input type="date" placeholder="authorizedDate" name="authorizedDate" />
-        <label>Authorized Date</label>
+      <form action={addInformation} className={styles.form}>
+        <label>Strain ID {`(required)`}</label>
+        <textarea name="strainId" type="text" rows="1" placeholder="Input ID" required />
+        <label>Accession Number</label>
+        <textarea name="accessionNumber" type="text" rows="1" placeholder="Accession Number" />
+        <label>{`Genus and/or species`}</label>
+        <textarea name="genusspecies" type="text" rows="1" placeholder={`Genus and/or species`} />
+        <label>Description {`(required)`}</label>
+        <textarea name="description" rows="8" placeholder="Description"required ></textarea>
+        <label>Traits</label>
+        <textarea name="trait" rows="6" placeholder="Traits"></textarea>
+        <label>Economic Use</label>
+        <textarea name="economicUse" rows="6" placeholder="Economic Use"></textarea>
+        <label>Habitat Information</label>
+        <textarea name="habitatInformation" rows="8" placeholder="Habitat Information"></textarea>
+        <label>Species Author</label>
+        <textarea name="speciesAuthor" rows="1" type="text" placeholder="Species Author" />
+        <label>Isolator</label>
+        <textarea name="isolator" rows="1" type="text" placeholder="Isolator" />
+        <label>Provenance or History of the Strain or Species</label>
+        <textarea name="provenance" rows="1" type="text" placeholder="Provenance" />
+        <label>Additional Information</label>
+        <textarea name="additionalInformation" rows="10" placeholder="Additional Information"></textarea>
         <button type="submit">Submit</button>
       </form>
     </div>
   );
 };
 
-export default AddRecordPage;
+export default AddInformationPage;

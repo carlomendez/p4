@@ -1,48 +1,48 @@
 import Link from "next/link";
-import styles from "@components/entries/entries.module.css";
 import Search from "@components/Search";
 import Pagination from "@components/Pagination";
-import { fetchInformationList } from "@lib/data";
-import { deleteInformation } from "@lib/actions";
+import { fetchStrainReferences } from "@lib/data";
+import { deleteReference } from "@lib/actions";
+import styles from "@components/entries/entries.module.css";
 
-const RecordsPage = async ({ searchParams }) => {
+const ReferencesTab = async ({ searchParams, id }) => {
   const q = searchParams?.q || "";
   const page = searchParams?.page || 1;
-  const { count, informationList } = await fetchInformationList(q, page);
+  const { count, references } = await fetchStrainReferences(q, page, id);
 
   return (
     <div className={styles.container}>
       <div className={styles.top}>
         <Search placeholder="Search for a record..." />
-        <Link href="/dashboard/records/add">
+        <Link href={`/dashboard/records/add-reference/${id}`}>
           <button className={styles.addButton}>Add New</button>
         </Link>
       </div>
       <table className={styles.table}>
         <thead>
           <tr>
-            <td>Strain Id</td>
-            <td>Accession No.</td>
-            <td>{`Genus and/or species`}</td>
-            <td>Description</td>
+            <td>Author</td>
+            <td>Article Title</td>
+            <td>Publisher</td>
+            <td>Publication Date</td>
           </tr>
         </thead>
         <tbody>
-          {informationList?.map((record) => (
-            <tr key={record.id}>
-              <td>{record.strainId}</td>
-              <td>{record.accessionNumber}</td>
-              <td>{record.genusspecies}</td>
-              <td>{record.description?.toString().slice(0, 50)}</td>
+          {references?.map((reference) => (
+            <tr key={reference.id}>
+              <td>{reference.author}</td>
+              <td>{reference.articleTitle?.toString().slice(0, 50)}</td>
+              <td>{reference.publisher?.toString().slice(0, 30)}</td>
+              <td>{reference.publicationDate}</td>
               <td>
                 <div className={styles.buttons}>
-                  <Link href={`/dashboard/records/${record.id}`}>
+                  <Link href={`/dashboard/records/reference/${reference.id}`}>
                     <button className={`${styles.button} ${styles.view}`}>
                       View
                     </button>
                   </Link>
-                  <form action={deleteInformation}>
-                    <input type="hidden" name="id" value={record.id} />
+                  <form action={deleteReference}>
+                    <input type="hidden" name="id" value={reference.id} />
                     <button className={`${styles.button} ${styles.delete}`}>
                       Delete
                     </button>
@@ -58,4 +58,4 @@ const RecordsPage = async ({ searchParams }) => {
   );
 };
 
-export default RecordsPage;
+export default ReferencesTab;

@@ -13,7 +13,6 @@
     "@emotion/styled": "^11.11.0",
     "@mui/base": "^5.0.0-beta.23",
     "@mui/material": "^5.14.17",
-    "bcrypt": "^5.1.1",
     "chart.js": "^4.4.0",
     "firebase": "^10.7.1",
     "mongodb": "^6.3.0",

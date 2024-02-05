@@ -1,7 +1,3 @@
-// "use client";
-// import { useEffect, useState} from 'react';
-// import { useRouter, useSearchParams } from 'next/navigation';
-// import { useSession } from "next-auth/react";
 import AuthChecker from '@components/AuthChecker';
 import EditForm from '@components/EditForm';
 import { fetchArticle } from "@/lib/data";

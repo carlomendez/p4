@@ -101,7 +101,6 @@ const EditForm = ({id, title, desc, author}) => {
               Your Article
             </span>
             <textarea 
-              value={title} 
               // onChange={(e)=> setArticle({ ...article, title: e.target.value})} 
               name = "title"
               // placeholder={article.title}
@@ -116,7 +115,6 @@ const EditForm = ({id, title, desc, author}) => {
               Author
             </span>
             <input 
-              value={author} 
               // onChange={(e)=> setArticle({ ...article, author: e.target.value})} 
               name="author"
               // placeholder={article.author}

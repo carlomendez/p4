@@ -25,26 +25,29 @@ const menuItems = [
         title: "Records",
         path: "/dashboard/records",
       },
-      // {
-      //   title: "Teams",
-      //   path: "/dashboard/teams",
-      //   icon: <MdPeople />,
-      // },
-    ],
-  },
-  {
-    title: "User",
-    list: [
       {
-        title: "Settings",
-        path: "/dashboard/settings",
+        title: "References",
+        path: "/dashboard/references",
       },
       {
-        title: "Help",
-        path: "/dashboard/help",
+        title: "Old Records",
+        path: "/dashboard/old-records",
       },
     ],
   },
+  // {
+  //   title: "User",
+  //   list: [
+  //     {
+  //       title: "Settings",
+  //       path: "/dashboard/settings",
+  //     },
+  //     {
+  //       title: "Help",
+  //       path: "/dashboard/help",
+  //     },
+  //   ],
+  // },
 ];
 
 const Sidebar = () => {

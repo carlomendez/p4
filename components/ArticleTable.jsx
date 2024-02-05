@@ -5,9 +5,6 @@ import Search from "@components/Search";
 import { fetchArticles } from "@lib/data";
 import { deleteArticle } from "@/lib/actions";
 
-import ArticleEditButton from "./ArticleEdit";
-
-
 const ArticleTable = async (searchParams) => {
   const q = searchParams?.q || "";
   const page = searchParams?.page || 1;
