@@ -4,17 +4,15 @@ import TaxonomyTab from "@components/TaxonomyTab";
 import ReferencesTab from "@components/ReferencesTab";
 import { fetchInformation, fetchTaxonomyByStrain } from "@lib/data";
 
-const RecordDashboardPage = async ({ params }) => {
+const DatabaseRecordDashboardPage = async ({ params }) => {
   const { id } = params;
   const information = await fetchInformation(id);
   const { count, taxonomy } = await fetchTaxonomyByStrain(id);
 
   return (
     <RecordDashboard 
-      entrypoint= 'dashboard'
       first={
         <InformationTab 
-        entrypoint= 'dashboard'
         id = {information.id}
         strainId = {information.strainId}
         accessionNumber = {information.accessionNumber}
@@ -31,7 +29,6 @@ const RecordDashboardPage = async ({ params }) => {
       }
       second={
         <TaxonomyTab 
-        entrypoint= 'dashboard'
         count = {count}
         id = {taxonomy?.id}
         specimenId = {id}
@@ -49,7 +46,6 @@ const RecordDashboardPage = async ({ params }) => {
       }
       third={
         <ReferencesTab 
-        entrypoint= 'dashboard'
         id = {information.id}
         />
       }
@@ -57,4 +53,4 @@ const RecordDashboardPage = async ({ params }) => {
   )
 }
 
-export default RecordDashboardPage;
+export default DatabaseRecordDashboardPage;

@@ -1,14 +1,14 @@
 import AuthChecker from '@components/AuthChecker';
-import EditForm from '@components/EditForm';
+import EditArticle from '@components/EditArticle';
 import { fetchArticle } from "@/lib/data";
 
-const EditPost = async ({ params }) => {
+const EditPostPage = async ({ params }) => {
     const { id } = params;
     const article = await fetchArticle(id);
     
   return (
     <AuthChecker>
-        <EditForm 
+        <EditArticle 
             id = {article.id}
             title = {article.title}
             desc = {article.desc}
@@ -18,4 +18,4 @@ const EditPost = async ({ params }) => {
   )
 }
 
-export default EditPost;
+export default EditPostPage;

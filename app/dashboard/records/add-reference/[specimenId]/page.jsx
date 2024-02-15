@@ -1,11 +1,16 @@
+"use client";
+
 import { addReference } from "@lib/actions";
 import styles from "@components/entries/addEntry/addEntry.module.css";
+import { useSession } from "next-auth/react"
 
 const AddReferencePage = async ({ params }) => {
+  const { data: session } = useSession();
   const { specimenId } = params;
   return (
     <div className={styles.container}>
       <form action={addReference} className={styles.form}>
+          <input type="hidden" name="userId" value={session?.user.id} />
           <input type="hidden" name="specimenId" value={specimenId} />
           <label>{`Author/s`}
           </label>

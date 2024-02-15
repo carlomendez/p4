@@ -1,11 +1,10 @@
 "use client"
 
-import Dashboard1 from "@components/Dashboard1";
+import Link from "next/link";
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { useState } from "react";
-import Dashboard2 from "@components/Dashboard2";
 import Box from '@mui/material/Box';
 // import InformationContainer from "@components/InformationContainer";
 
@@ -42,7 +41,7 @@ function a11yProps(index) {
   };
 }
 
-const RecordDashboard = ({ first, second, third }) => {
+const RecordDashboard = ({ entrypoint='public', first, second, third }) => {
 
   const [value, setValue] = useState(0);
 
@@ -69,7 +68,13 @@ const RecordDashboard = ({ first, second, third }) => {
               <CustomTabPanel value={value} index={2}>
                 {third}
               </CustomTabPanel>
-            </>  
+            </> 
+            {entrypoint === 'public' && (<Link href={`/database`} className="text-gray-500 text-sm">
+                Back
+            </Link>)} 
+            {entrypoint === 'dashboard' && (<Link href={`/dashboard/records`} className="text-gray-500 text-sm">
+                Back
+            </Link>)} 
           </Box>
   )
 }

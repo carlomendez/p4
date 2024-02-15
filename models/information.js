@@ -2,6 +2,10 @@ import { Schema, model, models } from "mongoose";
 
 const InformationSchema = new Schema(
     {
+        userId: {
+          type: Schema.Types.ObjectId,
+          ref: "User"
+        },
         strainId:{
           type: String,
           required:true,

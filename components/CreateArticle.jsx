@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 // import ReactQuill from "react-quill";
 import dynamic from 'next/dynamic'
@@ -12,9 +14,11 @@ import {
 import { app } from "@/utils/firebase";
 import { useEffect, useState } from "react";
 import { addArticle } from "@/lib/actions";
+import { useSession } from "next-auth/react";
 
-const CreateForm = ({creator}) => {
-  
+const CreateArticle = () => {
+
+  const { data: session } = useSession();
   const [file, setFile] = useState(null);
   const [media, setMedia] = useState("");
   const [desc, setDesc] = useState("");
@@ -106,7 +110,7 @@ const CreateForm = ({creator}) => {
         className="mt-10 w-full flex flex-col gap-7 glassmorphism" 
       >
           <label>
-            <input type="hidden" name="creator" value={creator} />
+            <input type="hidden" name="creator" value={session?.user.id} />
             <span
               className="font-satoshi font-semibold text-base text-gray-700"  
             >
@@ -186,4 +190,4 @@ const CreateForm = ({creator}) => {
   )
 }
 
-export default CreateForm
+export default CreateArticle

@@ -1,7 +1,8 @@
 import Link from "next/link";
 import styles from "@components/entries/singleEntry/singleEntry.module.css";
 
-const InformationTab = ({ 
+const InformationTab = ({
+  entrypoint = 'public', 
   id,
   strainId, 
   accessionNumber, 
@@ -19,11 +20,11 @@ const InformationTab = ({
   return (
     <div className={styles.container}>
       <div className={styles.formContainer}>
-        <Link href={`/update-information/${id}`}>
+        {entrypoint === 'dashboard' && (<Link href={`/update-information/${id}`}>
                       <button >
                         Update
                       </button>
-                    </Link>
+                    </Link>)}
         <div className={styles.form}>
           <label>Strain ID</label>
           <p>{strainId}</p>

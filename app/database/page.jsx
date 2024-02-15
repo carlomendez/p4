@@ -4,7 +4,7 @@ import Search from "@components/Search";
 import Pagination from "@components/Pagination";
 import { fetchInformationList } from "@lib/data";
 
-const RecordsPage = async ({ searchParams }) => {
+const DatabasePage = async ({ searchParams }) => {
   const q = searchParams?.q || "";
   const page = searchParams?.page || 1;
   const { count, informationList } = await fetchInformationList(q, page);
@@ -13,9 +13,6 @@ const RecordsPage = async ({ searchParams }) => {
     <div className={styles.container}>
       <div className={styles.top}>
         <Search placeholder="Search for a record..." />
-        <Link href="/dashboard/records/add">
-          <button className={styles.addButton}>Add New</button>
-        </Link>
       </div>
       <table className={styles.table}>
         <thead>
@@ -35,7 +32,7 @@ const RecordsPage = async ({ searchParams }) => {
               <td>{record.description?.toString().slice(0, 50)}</td>
               <td>
                 <div className={styles.buttons}>
-                  <Link href={`/dashboard/records/${record.id}`}>
+                  <Link href={`/database/${record.id}`}>
                     <button className={`${styles.button} ${styles.view}`}>
                       View
                     </button>
@@ -51,4 +48,4 @@ const RecordsPage = async ({ searchParams }) => {
   );
 };
 
-export default RecordsPage;
+export default DatabasePage;

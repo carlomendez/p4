@@ -1,11 +1,16 @@
+"use client";
+
 import { addTaxonomy } from "@lib/actions";
 import styles from "@components/entries/addEntry/addEntry.module.css";
+import { useSession } from "next-auth/react"
 
 const AddTaxonomyPage = async ({ params }) => {
+  const { data: session } = useSession();
   const { specimenId } = params;
   return (
     <div className={styles.container}>
       <form action={addTaxonomy} className={styles.form}>
+          <input type="hidden" name="userId" value={session?.user.id} />
           <input type="hidden" name="specimenId" value={specimenId} />
           <label>Strain</label>
             <textarea type="text" name="strain" rows="1" />

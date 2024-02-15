@@ -7,6 +7,7 @@ import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 const navigation = [
     { name: 'News', href: "/news", current: false },
     { name: 'Find a Cave', href: "/find-a-cave", current: false },
+    { name: 'Database', href: "/database", current: false },
   ]
 
 function classNames(...classes) {

@@ -15,11 +15,15 @@ const menuItems = [
       {
         title: "Users",
         path: "/dashboard/users",
+      },
+      {
+        title: "Archive Logs",
+        path: "/dashboard/logs",
       }
     ],
   },
   {
-    title: "Analytics",
+    title: "Database",
     list: [
       {
         title: "Records",
@@ -28,10 +32,6 @@ const menuItems = [
       {
         title: "References",
         path: "/dashboard/references",
-      },
-      {
-        title: "Old Records",
-        path: "/dashboard/old-records",
       },
     ],
   },

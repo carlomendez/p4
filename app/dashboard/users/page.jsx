@@ -19,8 +19,6 @@ const UsersPage = async ({ searchParams }) => {
           <tr>
             <td>Name</td>
             <td>Email</td>
-            <td>Created At</td>
-            <td>Role</td>
           </tr>
         </thead>
         <tbody>
@@ -32,8 +30,6 @@ const UsersPage = async ({ searchParams }) => {
                 </div>
               </td>
               <td>{user.email}</td>
-              <td>{user.createdAt?.toString().slice(4, 16)}</td>
-              <td>{user.role}</td>
             </tr>
           ))}
         </tbody>

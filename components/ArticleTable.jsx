@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import Search from "@components/Search";
 import { fetchArticles } from "@lib/data";
-import { deleteArticle } from "@/lib/actions";
 
 const ArticleTable = async (searchParams) => {
   const q = searchParams?.q || "";
@@ -54,20 +53,10 @@ const ArticleTable = async (searchParams) => {
                   <div >
                     <Link href={`/update-post/${article.id}`}>
                       <button >
-                        Update
+                        Update or Delete
                       </button>
                     </Link>
                     {/* <ArticleEditButton id={article.id.toString()}/> */}
-                  </div>
-                </td>
-                <td>
-                  <div>  
-                    <form action={deleteArticle}>
-                      <input type="hidden" name="id" value={article.id} />
-                      <button>
-                        Delete
-                      </button>
-                    </form>
                   </div>
                 </td>
               </tr>

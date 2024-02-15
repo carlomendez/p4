@@ -1,6 +1,6 @@
 import '@styles/globals.css';
 import Nav from '@components/Nav';
-import Provider from '@components/Provider';
+import ProviderSession from '@components/SessionProvider';
 
 export const metadata = {
     title: "NICER CAVES",
@@ -11,7 +11,7 @@ const RootLayout = ({children}) => {
   return (
     <html lang="en">
         <body>
-            <Provider>
+            <ProviderSession>
                 <div className='main'>
                     <div className='gradient'/>
                 </div>
@@ -19,7 +19,7 @@ const RootLayout = ({children}) => {
                     <Nav />
                     {children}
                 </main>
-            </Provider>
+            </ProviderSession>
         </body>
     </html>
   )

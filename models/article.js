@@ -23,6 +23,7 @@ const ArticleSchema = new Schema(
         img: {
           type: String,
         },
+        is_deleted: { type: Boolean, default: false }
       },
       { timestamps: true }
     );

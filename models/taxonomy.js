@@ -2,6 +2,10 @@ import { Schema, model, models } from "mongoose";
 
 const TaxonomySchema = new Schema(
     {
+        userId: {
+          type: Schema.Types.ObjectId,
+          ref: "User"
+        },
         specimenId: {
           type: Schema.Types.ObjectId,
           ref: "Information"

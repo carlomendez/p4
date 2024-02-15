@@ -2,6 +2,7 @@ import Link from "next/link";
 import styles from "@components/entries/singleEntry/singleEntry.module.css";
 
 const TaxonomyTab = ({ 
+  entrypoint = 'public',
   count,
   id,
   specimenId, 
@@ -20,7 +21,7 @@ const TaxonomyTab = ({
   return (
     <div className={styles.container}>
       <div className={styles.formContainer}>
-      {count < 1 &&  (
+      {count < 1 && entrypoint === 'dashboard' &&  (
         <Link href={`/dashboard/records/add-taxonomy/${specimenId}`}>
           <button >
             Add Taxonomy
@@ -29,11 +30,11 @@ const TaxonomyTab = ({
       ) }
       {count > 0 && (
           <>
-            <Link href={`/update-taxonomy/${id}`}>
+            {entrypoint === 'dashboard' && (<Link href={`/update-taxonomy/${id}`}>
               <button >
                 Update
               </button>
-            </Link>
+            </Link>)}
             <div className={styles.form}>
               <label>Strain</label>
               <p>{strain}</p>

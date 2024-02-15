@@ -13,12 +13,17 @@ import {
 import { app } from "@/utils/firebase";
 import { useEffect, useState } from "react";
 import { updateArticle } from "@/lib/actions";
+import { useSession } from "next-auth/react";
+import { deleteArticle } from "@/lib/actions";
 
-const EditForm = ({id, title, desc, author}) => {
+const EditArticle = ({id, title, desc, author}) => {
   
+  const { data: session } = useSession();
   const [file, setFile] = useState(null);
   const [media, setMedia] = useState("");
   const [value, setValue] = useState(desc);
+  const [isOpen, setOpen] = useState(false);
+  const toggleMenu = () => setOpen(!isOpen);
 
   var toolbarOptions = [
     ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
@@ -89,6 +94,31 @@ const EditForm = ({id, title, desc, author}) => {
         As of this moment, editing the image requires admin request. Contact an admin in case there is a need to replace the image.
       </p>
       <br></br>
+      {isOpen == false && (
+          <div>
+
+                    <button onClick={toggleMenu}>
+                      Delete
+                    </button>
+                </div>
+        )}
+        {isOpen && (
+          <div>
+                  <p className="desc text-left max-w-md">
+                    Are you sure you want to delete this record?
+                  </p>
+                  <form action={deleteArticle}>
+                    <input type="hidden" name="id" value={id} />
+                    <input type="hidden" name="userId" value={session?.user.id} />
+                    <button>
+                      Delete
+                    </button>
+                  </form>
+                  <button onClick={toggleMenu}>
+                      Cancel
+                  </button>
+                </div>
+        )}
       <form
         action={updateArticle}
         className="mt-10 w-full flex flex-col gap-7 glassmorphism" 
@@ -109,6 +139,7 @@ const EditForm = ({id, title, desc, author}) => {
             />
           </label>
           <label>
+            <input type="hidden" name="userId" value={session?.user.id} />
             <span
               className="font-satoshi font-semibold text-base text-gray-700"  
             >
@@ -160,4 +191,4 @@ const EditForm = ({id, title, desc, author}) => {
   )
 }
 
-export default EditForm
+export default EditArticle

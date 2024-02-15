@@ -1,3 +1,4 @@
+import { admins, editors } from "@lib/roles";
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import User from "@models/user";
@@ -11,22 +12,11 @@ const handler = NextAuth({
             clientId: process.env.GOOGLE_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
             profile(profile) {
-                //add as many admins as you can here
                 let userRole = "user";
-                // console.log(profile.email)
-                // const fetchedUserViaEmail = await fetchUserByEmail(profile?.email);
-                // console.log(fetchedUserViaEmail.role);
-                // if (fetchedUserViaEmail?.role == "admin") {
-                //     userRole = "admin";
-                //   }
-                // if (fetchedUserViaEmail?.role == "editor") {
-                //     userRole = "editor";
-                //   }
-                if (profile?.email == "cgmendez1@up.edu.ph") {
+                if (admins.includes(profile?.email)) {
                     userRole = "admin";
                   }
-                // add as many editors as you can here
-                if (profile?.email == "carlorielmendez@gmail.com") {
+                if (editors.includes(profile?.email)) {
                     userRole = "editor";
                   }
                 console.log("Profile Google: ", profile);

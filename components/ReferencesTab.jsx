@@ -2,10 +2,9 @@ import Link from "next/link";
 import Search from "@components/Search";
 import Pagination from "@components/Pagination";
 import { fetchStrainReferences } from "@lib/data";
-import { deleteReference } from "@lib/actions";
 import styles from "@components/entries/entries.module.css";
 
-const ReferencesTab = async ({ searchParams, id }) => {
+const ReferencesTab = async ({ searchParams, entrypoint = 'public', id }) => {
   const q = searchParams?.q || "";
   const page = searchParams?.page || 1;
   const { count, references } = await fetchStrainReferences(q, page, id);
@@ -14,9 +13,9 @@ const ReferencesTab = async ({ searchParams, id }) => {
     <div className={styles.container}>
       <div className={styles.top}>
         <Search placeholder="Search for a record..." />
-        <Link href={`/dashboard/records/add-reference/${id}`}>
+        {entrypoint === 'dashboard' && (<Link href={`/dashboard/records/add-reference/${id}`}>
           <button className={styles.addButton}>Add New</button>
-        </Link>
+        </Link>)}
       </div>
       <table className={styles.table}>
         <thead>
@@ -36,17 +35,16 @@ const ReferencesTab = async ({ searchParams, id }) => {
               <td>{reference.publicationDate}</td>
               <td>
                 <div className={styles.buttons}>
-                  <Link href={`/dashboard/records/reference/${reference.id}`}>
+                  {entrypoint === 'dashboard' && (<Link href={`/dashboard/records/reference/${reference.id}`}>
                     <button className={`${styles.button} ${styles.view}`}>
                       View
                     </button>
-                  </Link>
-                  <form action={deleteReference}>
-                    <input type="hidden" name="id" value={reference.id} />
-                    <button className={`${styles.button} ${styles.delete}`}>
-                      Delete
+                  </Link>)}
+                  {entrypoint === 'public' && (<Link href={`/database/reference/${reference.id}`}>
+                    <button className={`${styles.button} ${styles.view}`}>
+                      View
                     </button>
-                  </form>
+                  </Link>)}
                 </div>
               </td>
             </tr>
