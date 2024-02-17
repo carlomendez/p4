@@ -30,6 +30,10 @@ const CreateInformation = () => {
           <textarea name="isolator" rows="1" type="text" placeholder="Isolator" />
           <label>Provenance or History of the Strain or Species</label>
           <textarea name="provenance" rows="1" type="text" placeholder="Provenance" />
+          <label>Latitude</label>
+          <input name="latitude" rows="1" type="number" placeholder="Latitude"/>
+          <label>Longitude</label>
+          <input name="longitude" rows="1" type="number" placeholder="Longitude" />
           <label>Additional Information</label>
           <textarea name="additionalInformation" rows="10" placeholder="Additional Information"></textarea>
           <button type="submit">Submit</button>

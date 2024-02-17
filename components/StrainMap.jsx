@@ -2,11 +2,6 @@
 
 import React, { useState } from 'react'
 import { osm } from 'pigeon-maps/providers'
-import FormControl from '@mui/material/FormControl';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
 import { Map, Marker, ZoomControl } from "pigeon-maps";
 
 const lng2tile = (lon, zoom) => ((lon + 180) / 360) * Math.pow(2, zoom)
@@ -36,13 +31,9 @@ const StamenAttribution = () => (
   </span>
 )
 
-const MapComponent = () => {
-    const [province, setProvince] = useState('');
-    const handleprovinceChange = (event) => {
-    setProvince(event.target.value);
-    };
+const StrainMap = ({ latitude, longitude}) => {
   const [state, setRawState] = useState({
-    center: [14.167049, 121.243247],
+    center: [latitude, longitude],
     zoom: 12,
     provider: {osm},
     animate: true,
@@ -78,34 +69,8 @@ const MapComponent = () => {
 
   return (
     <section className="w-full">
-    <h1 className="text-left text-xl font-bold mb-2">
-        Find a Cave
-        <br className="max-md:hidden"/>
-    </h1>
-    <h2 className="text-l font-bold mb-10">    
-        <span className="text-center">Select a Province to to find a Cave</span>
-    </h2>
-    <Box className='mb-10'>
-        <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Province</InputLabel>
-        <Select
-            labelId="demo-simple-select-label"
-            size='small'
-            id="demo-simple-select"
-            value={province}
-            label="Province"
-            onChange={handleprovinceChange}
-        >
-            <MenuItem value={'Cavite'} onClick={() => setState({ center: [14.21, 120.66], zoom:10 })}>Cavite</MenuItem>
-            <MenuItem value={'Laguna'} onClick={() => setState({ center: [14.06, 121.42], zoom:10 })}>Laguna</MenuItem>
-            <MenuItem value={'Batangas'} onClick={() => setState({ center: [13.71, 121.18], zoom:10 })}>Batangas</MenuItem>
-            <MenuItem value={'Rizal'} onClick={() => setState({ center: [14.74, 121.28], zoom:10 })}>Rizal</MenuItem>
-            <MenuItem value={'Quezon'} onClick={() => setState({ center: [14.04, 121.52], zoom:10 })}>Quezon</MenuItem>
-        </Select>
-        </FormControl>
-    </Box>
     <div style={{ textAlign: 'center', marginTop: 50 }}>
-      <div style={{ maxWidth: 1128, margin: '0 auto' }}>
+      <div style={{ maxWidth: 600, margin: '0 auto' }}>
         <Map
           limitBounds="edge"
           center={center}
@@ -118,14 +83,10 @@ const MapComponent = () => {
           minZoom={minZoom}
           maxZoom={maxZoom}
           attribution={provider === 'stamenTerrain' || provider === 'stamenToner' ? <StamenAttribution /> : null}
-          width={1128} 
+          width={600} 
           height={500}
         >
-            <Marker width={40} anchor={[14.21, 120.66]} payload={'Cavite'} onClick={handleMarkerClick}/>
-            <Marker width={40} anchor={[14.06, 121.42]} payload={'Laguna'} onClick={handleMarkerClick}/>
-            <Marker width={40} anchor={[13.71, 121.18]} payload={'Batangas'} onClick={handleMarkerClick}/>
-            <Marker width={40} anchor={[14.74, 121.28]} payload={'Rizal'} onClick={handleMarkerClick}/>
-            <Marker width={40} anchor={[14.04, 121.52]} payload={'Quezon'} onClick={handleMarkerClick}/>
+            <Marker width={40} anchor={[latitude, longitude]} payload={'Location'} onClick={handleMarkerClick}/>
           <ZoomControl />
         </Map>
       </div>
@@ -142,4 +103,4 @@ const MapComponent = () => {
     </section>  
   )
 }
-export default MapComponent
+export default StrainMap

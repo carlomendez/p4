@@ -27,6 +27,8 @@ const RecordDashboardPage = async ({ params }) => {
         isolator = {information.isolator}
         provenance = {information.provenance}
         additionalInformation = {information.additionalInformation}
+        latitude = {information.latitude}
+        longitude = {information.longitude}
         />
       }
       second={

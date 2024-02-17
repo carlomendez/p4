@@ -56,7 +56,6 @@ const ArticleTable = async (searchParams) => {
                         Update or Delete
                       </button>
                     </Link>
-                    {/* <ArticleEditButton id={article.id.toString()}/> */}
                   </div>
                 </td>
               </tr>

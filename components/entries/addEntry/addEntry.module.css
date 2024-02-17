@@ -23,7 +23,7 @@
 }
 
 .form input, .form select {
-  width: 45%;
+  width: 100%;
 }
 
 .form textarea{

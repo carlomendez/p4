@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "@components/entries/singleEntry/singleEntry.module.css";
+import StrainMap from "./StrainMap";
 
 const InformationTab = ({
   entrypoint = 'public', 
@@ -14,7 +15,9 @@ const InformationTab = ({
   speciesAuthor, 
   isolator, 
   provenance, 
-  additionalInformation 
+  additionalInformation,
+  latitude,
+  longitude 
  }) => {
 
   return (
@@ -49,6 +52,12 @@ const InformationTab = ({
           <label>Additional Information</label>
           <p>{additionalInformation}</p>
         </div>
+        {latitude && longitude &&(
+          <StrainMap
+                  latitude = {latitude}
+                  longitude = {longitude}
+          />)
+        }
       </div>
     </div>
   );

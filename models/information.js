@@ -43,6 +43,12 @@ const InformationSchema = new Schema(
         additionalInformation: {
           type: String,
         },
+        latitude:{
+          type: Number,
+        },
+        longitude:{
+          type: Number,
+        },
         is_deleted: { type: Boolean, default: false }
       },
       { timestamps: true }

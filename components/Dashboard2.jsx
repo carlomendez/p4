@@ -7,7 +7,6 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import GraphCard5 from './GraphCards5';
 import GraphCard6 from './GraphCards6';
-import Table1 from './Table1';
 import GraphCard7 from './GraphCards7';
 
 const filters = [
@@ -59,18 +58,10 @@ const PostCardList2 = ({data, handleTagClick}) => {
       </div>
     )
   }
-const PostCardList3 = () => {
-    return (
-          <Table1 />
-    )
-  }
 
 const Dashboard2 = () => {
   const [posts, setPosts] = useState([]);
   const [searchText, setSearchText] = useState('');
-  const handleSearchChange = (e) => {
-
-  }
 
   const fetchPosts = async () => {
     const response = await fetch("api/post");
@@ -137,8 +128,6 @@ const Dashboard2 = () => {
         data={posts}
         handleTagClick={() => {}}
       />
-      {/* <div className='inline-flex items-center justify-between w-full'><span><p>Data Table (top 1000)</p></span> <Button>Export</Button></div>
-      <PostCardList3/> */}
     </section>
     </Box>
   )

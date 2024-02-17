@@ -80,6 +80,10 @@ const EditInformation = ({
             <input name="isolator" rows="1" placeholder={isolator} style={{width: "100%"}}/>
           <label>Provenance or History of the Strain or Species</label>
             <input name="provenance" rows="1" placeholder={provenance} style={{width: "100%"}}/>
+          <label>Latitude</label>
+            <input name="latitude" rows="1" type="number" placeholder="Latitude" />
+          <label>Longitude</label>
+            <input name="longitude" rows="1" type="number" placeholder="Longitude" />
           <label>Additional Information</label>
             <input name="additionalInformation" rows="10" placeholder={additionalInformation} style={{width: "100%"}}/>
           <button type="submit">Submit</button>

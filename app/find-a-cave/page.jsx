@@ -1,9 +1,9 @@
-import MapPage from "@components/Map";
+import MapComponent from "@components/Map";
 
 const FindCave = () => {
 
   return (
-      <MapPage/>
+      <MapComponent/>
   )
 }
 
