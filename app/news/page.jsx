@@ -32,15 +32,15 @@ const News = async ({ searchParams }) => {
                   </div>
                 )}
                 <div >
-                  <div >
-                    <span >
-                      {article.createdAt.toString().substring(0, 15)}
-                    </span>
-                  </div>
                   <div className='flex flex-col'>
                     <Link href={`/news/${article.id}`}>
                       <h1 className='font-satoshi font-semibold text-gray-900'>{article.title}</h1>
                     </Link>
+                  </div>
+                  <div >
+                    <span >
+                      {article.createdAt.toString().substring(4, 15)}
+                    </span>
                   </div>
                 </div>
               </div>

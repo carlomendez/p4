@@ -8,16 +8,16 @@ const SinglePage = async ({ params }) => {
   const article = await fetchArticle(id);
 
   return (
-    <section className="w-full">
+    <section className="w-10/12">
       <Box className='mb-10'>
       <div >
         <div >
           <div >
-            <h1 >{article?.title}</h1>
+            <h1 className="head_text font-extrabold">{article?.title}</h1>
               <div >
                 <span >{article.author} -</span>
                 <span >
-                  {article.createdAt.toString().substring(0, 15)}
+                  {article.createdAt.toString().substring(4, 15)}
                 </span>
               </div>
           </div>
@@ -33,7 +33,7 @@ const SinglePage = async ({ params }) => {
           </div>
         </div>
       </div>
-      <Link href="/news" className="black_btn">
+      <Link href="/news" className="black_btn mt-10">
           Back
       </Link>
       </Box>
