@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { usePathname } from 'next/navigation'
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const navigation = [
@@ -27,6 +28,8 @@ const Nav = () => {
         })();
     }, []);
 
+    const pathname = usePathname()
+
   return (
     <nav className="flex-between w-full mb-16 pt-3">
         <Link href="/" className="flex gap-2 flex-center">
@@ -45,7 +48,7 @@ const Nav = () => {
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          item.current ? 'bg-gray-900 text-white' : 'text-gray-900 hover:bg-gray-700 hover:text-white',
+                            pathname === item.href ? 'bg-gray-900 text-white' : 'text-gray-900 hover:bg-gray-700 hover:text-white',
                           'rounded-md px-3 py-2 text-sm font-medium'
                         )}
                         aria-current={item.current ? 'page' : undefined}

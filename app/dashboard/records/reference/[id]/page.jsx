@@ -10,7 +10,7 @@ const ReferencePage = async ({ params }) => {
     <div className={styles.container}>
       <div className={styles.formContainer}>
         <Link href={`/update-reference/${id}`}>
-                      <button >
+                      <button className="black_btn" >
                         Update
                       </button>
                     </Link>
@@ -38,7 +38,7 @@ const ReferencePage = async ({ params }) => {
           <label>Date of Access {`(for web access)`}</label>
           <p>{reference.accessDate}</p>
         </div>
-        <Link href={`/dashboard/records/${reference.specimenId}`} className="text-gray-500 text-sm">
+        <Link href={`/dashboard/records/${reference.specimenId}`} className="black_btn">
             Back
         </Link>
       </div>

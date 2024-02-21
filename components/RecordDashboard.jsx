@@ -6,7 +6,6 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { useState } from "react";
 import Box from '@mui/material/Box';
-// import InformationContainer from "@components/InformationContainer";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -50,7 +49,7 @@ const RecordDashboard = ({ entrypoint='public', first, second, third }) => {
   };
 
   return (
-          <Box>
+          <section className="w-full">
             <>
               <Box>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
@@ -69,13 +68,17 @@ const RecordDashboard = ({ entrypoint='public', first, second, third }) => {
                 {third}
               </CustomTabPanel>
             </> 
-            {entrypoint === 'public' && (<Link href={`/database`} className="text-gray-500 text-sm">
-                Back
+            {entrypoint === 'public' && (<Link href={`/database`} className="mb-10">
+                <button className="black_btn">
+                  Back
+                </button>
             </Link>)} 
-            {entrypoint === 'dashboard' && (<Link href={`/dashboard/records`} className="text-gray-500 text-sm">
-                Back
+            {entrypoint === 'dashboard' && (<Link href={`/dashboard/records`} className="mb-10">
+                <button className="black_btn">
+                  Back
+                </button>
             </Link>)} 
-          </Box>
+          </section>
   )
 }
 

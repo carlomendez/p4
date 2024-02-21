@@ -28,6 +28,7 @@ const ArticleTable = async (searchParams) => {
               <td>Title</td>
               <td>Author</td>
               <td>Created At</td>
+              <td>Action</td>
             </tr>
           </thead>
           <tbody>
@@ -41,7 +42,6 @@ const ArticleTable = async (searchParams) => {
                       alt=""
                       width={40}
                       height={40}
-                      // className={styles.productImage}
                     />
                     {article.title}
                   </Link>  
@@ -51,8 +51,8 @@ const ArticleTable = async (searchParams) => {
                 <td>{article.createdAt?.toString().slice(4, 16)}</td>
                 <td>
                   <div >
-                    <Link href={`/update-post/${article.id}`}>
-                      <button >
+                    <Link href={`/update-post/${article.id}`} className="bg-teal-700 px-1.5 py-2.5 rounded-md">
+                      <button>
                         Update or Delete
                       </button>
                     </Link>

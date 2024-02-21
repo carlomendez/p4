@@ -20,6 +20,7 @@ const LogsPage = async ({ searchParams }) => {
             <td>Category</td>
             <td>Entry</td>
             <td>Timestamp</td>
+            <td>Action</td>
           </tr>
         </thead>
         <tbody>

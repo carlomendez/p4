@@ -10,7 +10,7 @@ const Pagination = ({ count }) => {
   const page = searchParams.get("page") || 1;
 
   const params = new URLSearchParams(searchParams);
-  const ITEM_PER_PAGE = 6;
+  const ITEM_PER_PAGE = 100;
 
   const hasPrev = ITEM_PER_PAGE * (parseInt(page) - 1) > 0;
   const hasNext = ITEM_PER_PAGE * (parseInt(page) - 1) + ITEM_PER_PAGE < count;
@@ -25,14 +25,14 @@ const Pagination = ({ count }) => {
   return (
     <div className="justify-between flex p-2.5">
       <button
-        className="py-1.5 px-2.5 cursor-pointer disabled:cursor-not-allowed"
+        className="py-1.5 px-2.5 cursor-pointer disabled:cursor-not-allowed black_btn"
         disabled={!hasPrev}
         onClick={() => handleChangePage("prev")}
       >
         Previous
       </button>
       <button
-        className="py-1.5 px-2.5 cursor-pointer disabled:cursor-not-allowed"
+        className="py-1.5 px-2.5 cursor-pointer disabled:cursor-not-allowed black_btn"
         disabled={!hasNext}
         onClick={() => handleChangePage("next")}
       >

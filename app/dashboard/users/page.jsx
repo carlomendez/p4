@@ -1,4 +1,3 @@
-// import { deleteUser } from "@lib/actions";
 import { fetchUsers } from "@lib/data";
 import styles from "@components/entries/entries.module.css";
 import Search from "@components/Search";

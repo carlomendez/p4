@@ -18,9 +18,9 @@ const News = async ({ searchParams }) => {
           <br className="max-md:hidden"/>
       </h1>   
     </section>
-          <section className="w-full">
+          <section className="w-full mt-6">
           <Search placeholder="Search for an article..." />
-          <div className='mt-16 prompt_layout'>
+          <div className='mt-6 prompt_layout'>
              <div >
                {articles.map((article) => (
                 <div className="mb-12" key={article.id}>
@@ -47,8 +47,6 @@ const News = async ({ searchParams }) => {
               ))}
             </div>
           </div>
-          </section>
-          <section>
           <Pagination count={count} />
           </section>
           </>

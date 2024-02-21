@@ -23,7 +23,7 @@ const TaxonomyTab = ({
       <div className={styles.formContainer}>
       {count < 1 && entrypoint === 'dashboard' &&  (
         <Link href={`/dashboard/records/add-taxonomy/${specimenId}`}>
-          <button >
+          <button className="black_btn" >
             Add Taxonomy
           </button>
         </Link>
@@ -31,7 +31,7 @@ const TaxonomyTab = ({
       {count > 0 && (
           <>
             {entrypoint === 'dashboard' && (<Link href={`/update-taxonomy/${id}`}>
-              <button >
+              <button className="black_btn">
                 Update
               </button>
             </Link>)}

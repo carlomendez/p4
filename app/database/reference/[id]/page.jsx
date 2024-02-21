@@ -33,7 +33,7 @@ const PublicReferencePage = async ({ params }) => {
           <label>Date of Access {`(for web access)`}</label>
           <p>{reference.accessDate}</p>
         </div>
-        <Link href={`/database/${reference.specimenId}`} className="text-gray-500 text-sm">
+        <Link href={`/database/${reference.specimenId}`} className="black_btn">
             Back
         </Link>
       </div>

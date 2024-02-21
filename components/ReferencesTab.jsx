@@ -24,6 +24,7 @@ const ReferencesTab = async ({ searchParams, entrypoint = 'public', id }) => {
             <td>Article Title</td>
             <td>Publisher</td>
             <td>Publication Date</td>
+            <td>Action</td>
           </tr>
         </thead>
         <tbody>

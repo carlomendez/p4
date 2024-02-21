@@ -1,8 +1,6 @@
 
-import Image from "next/image";
 import MenuLink from "./menuLink/MenuLink";
 import styles from "./sidebar.module.css";
-// import { useSession } from "next-auth/react";
 
 const menuItems = [
   {
@@ -35,38 +33,11 @@ const menuItems = [
       },
     ],
   },
-  // {
-  //   title: "User",
-  //   list: [
-  //     {
-  //       title: "Settings",
-  //       path: "/dashboard/settings",
-  //     },
-  //     {
-  //       title: "Help",
-  //       path: "/dashboard/help",
-  //     },
-  //   ],
-  // },
 ];
 
 const Sidebar = () => {
-  // const {data: session} = useSession();
   return (
     <div className={styles.container}>
-      {/* <div className={styles.user}>
-        <Image
-          className={styles.userImage}
-          src={session?.user.image}
-          alt=""
-          width="50"
-          height="50"
-        />
-        <div className={styles.userDetail}>
-          <span className={styles.username}>{session?.user.name}</span>
-          <span className={styles.userTitle}>Administrator</span>
-        </div>
-      </div> */}
       <ul className={styles.list}>
         {menuItems.map((cat) => (
           <li key={cat.title}>
@@ -77,17 +48,6 @@ const Sidebar = () => {
           </li>
         ))}
       </ul>
-      {/* <form
-        action={async () => {
-          "use server";
-          await signOut();
-        }}
-      >
-        <button className={styles.logout}>
-          <MdLogout />
-          Logout
-        </button>
-      </form> */}
     </div>
   );
 };

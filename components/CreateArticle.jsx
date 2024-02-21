@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-// import ReactQuill from "react-quill";
 import dynamic from 'next/dynamic'
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
@@ -117,8 +116,6 @@ const CreateArticle = () => {
               Your Article
             </span>
             <textarea 
-              // value={article.title} 
-              // onChange={(e)=> setArticle({ ...article, title: e.target.value})} 
               name = "title"
               placeholder="Write your post here..." 
               required
@@ -132,8 +129,6 @@ const CreateArticle = () => {
               Author
             </span>
             <input 
-              // value={article.author} 
-              // onChange={(e)=> setArticle({ ...article, author: e.target.value})} 
               name="author"
               placeholder="Author" 
               required

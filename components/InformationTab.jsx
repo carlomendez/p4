@@ -24,7 +24,7 @@ const InformationTab = ({
     <div className={styles.container}>
       <div className={styles.formContainer}>
         {entrypoint === 'dashboard' && (<Link href={`/update-information/${id}`}>
-                      <button >
+                      <button className="black_btn" >
                         Update
                       </button>
                     </Link>)}

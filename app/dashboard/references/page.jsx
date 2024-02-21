@@ -2,7 +2,6 @@ import Link from "next/link";
 import Search from "@components/Search";
 import Pagination from "@components/Pagination";
 import { fetchReferences } from "@lib/data";
-import { deleteReference } from "@lib/actions";
 import styles from "@components/entries/entries.module.css";
 
 const ReferencesPage = async ({ searchParams }) => {
@@ -22,6 +21,7 @@ const ReferencesPage = async ({ searchParams }) => {
             <td>Article Title</td>
             <td>Publisher</td>
             <td>Publication Date</td>
+            <td>Action</td>
           </tr>
         </thead>
         <tbody>
@@ -38,12 +38,6 @@ const ReferencesPage = async ({ searchParams }) => {
                       View
                     </button>
                   </Link>
-                  <form action={deleteReference}>
-                    <input type="hidden" name="id" value={reference.id} />
-                    <button className={`${styles.button} ${styles.delete}`}>
-                      Delete
-                    </button>
-                  </form>
                 </div>
               </td>
             </tr>

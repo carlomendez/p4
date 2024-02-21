@@ -104,7 +104,7 @@ const MapComponent = () => {
         </Select>
         </FormControl>
     </Box>
-    <div style={{ textAlign: 'center', marginTop: 50 }}>
+    <div style={{ textAlign: 'center', marginTop: 30 }}>
       <div style={{ maxWidth: 1128, margin: '0 auto' }}>
         <Map
           limitBounds="edge"

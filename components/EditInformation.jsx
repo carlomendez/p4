@@ -34,24 +34,24 @@ const EditInformation = ({
         {isOpen == false && (
           <div className={styles.buttons}>
 
-                    <button onClick={toggleMenu}>
+                    <button onClick={toggleMenu} className="black_btn">
                       Delete
                     </button>
                 </div>
         )}
         {isOpen && (
           <div className={styles.buttons}>
-                  <p className="desc text-left max-w-md">
+                  <p className="desc text-left max-w-md mb-5">
                     Are you sure you want to delete this record?
                   </p>
-                  <form action={deleteInformation}>
+                  <form action={deleteInformation}  className="mb-5">
                     <input type="hidden" name="id" value={id} />
                     <input type="hidden" name="userId" value={session?.user.id} />
-                    <button>
+                    <button className="black_btn">
                       Delete
                     </button>
                   </form>
-                  <button onClick={toggleMenu}>
+                  <button onClick={toggleMenu} className="black_btn">
                       Cancel
                   </button>
                 </div>

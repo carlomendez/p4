@@ -1,6 +1,5 @@
 "use client"
 import Link from "next/link";
-// import ReactQuill from "react-quill";
 import dynamic from 'next/dynamic'
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
@@ -97,24 +96,24 @@ const EditArticle = ({id, title, desc, author}) => {
       {isOpen == false && (
           <div>
 
-                    <button onClick={toggleMenu}>
+                    <button onClick={toggleMenu} className="black_btn">
                       Delete
                     </button>
                 </div>
         )}
         {isOpen && (
           <div>
-                  <p className="desc text-left max-w-md">
+                  <p className="desc text-left max-w-md mb-5">
                     Are you sure you want to delete this record?
                   </p>
-                  <form action={deleteArticle}>
+                  <form action={deleteArticle}  className="mb-5">
                     <input type="hidden" name="id" value={id} />
                     <input type="hidden" name="userId" value={session?.user.id} />
-                    <button>
+                    <button className="black_btn">
                       Delete
                     </button>
                   </form>
-                  <button onClick={toggleMenu}>
+                  <button onClick={toggleMenu} className="black_btn">
                       Cancel
                   </button>
                 </div>
@@ -131,9 +130,7 @@ const EditArticle = ({id, title, desc, author}) => {
               Your Article
             </span>
             <textarea 
-              // onChange={(e)=> setArticle({ ...article, title: e.target.value})} 
               name = "title"
-              // placeholder={article.title}
               placeholder={title}
               className="form_input"
             />
@@ -146,9 +143,7 @@ const EditArticle = ({id, title, desc, author}) => {
               Author
             </span>
             <input 
-              // onChange={(e)=> setArticle({ ...article, author: e.target.value})} 
               name="author"
-              // placeholder={article.author}
               placeholder={author}
               className="form_input"
             />
@@ -161,11 +156,9 @@ const EditArticle = ({id, title, desc, author}) => {
             </span>
             <ReactQuill
               modules={module}
-              // name="desc"
               theme="snow"
               value={value}
               onChange={setValue}
-              // placeholder={desc}
             />
           </label>
           <textarea

@@ -21,6 +21,7 @@ const DatabasePage = async ({ searchParams }) => {
             <td>Accession No.</td>
             <td>{`Genus and/or species`}</td>
             <td>Description</td>
+            <td>Action</td>
           </tr>
         </thead>
         <tbody>
