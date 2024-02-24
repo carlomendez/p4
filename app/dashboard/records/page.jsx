@@ -20,11 +20,11 @@ const RecordsPage = async ({ searchParams }) => {
       <table className={styles.table}>
         <thead>
           <tr>
-            <td>Strain Id</td>
-            <td>Accession No.</td>
-            <td>{`Genus and/or species`}</td>
-            <td>Description</td>
-            <td>Action</td>
+            <td className="font-bold">Strain Id</td>
+            <td className="font-bold">Accession No.</td>
+            <td className="font-bold">{`Genus and/or species`}</td>
+            <td className="font-bold">Description</td>
+            <td className="font-bold">Action</td>
           </tr>
         </thead>
         <tbody>

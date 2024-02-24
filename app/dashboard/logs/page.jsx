@@ -17,10 +17,10 @@ const LogsPage = async ({ searchParams }) => {
       <table className={styles.table}>
         <thead>
           <tr>
-            <td>Category</td>
-            <td>Entry</td>
-            <td>Timestamp</td>
-            <td>Action</td>
+            <td className="font-bold">Category</td>
+            <td className="font-bold">Entry</td>
+            <td className="font-bold">Timestamp</td>
+            <td className="font-bold">Action</td>
           </tr>
         </thead>
         <tbody>

@@ -33,13 +33,6 @@ const Nav = () => {
   return (
     <nav className="flex-between w-full mb-16 pt-3">
         <Link href="/" className="flex gap-2 flex-center">
-            {/* <Image 
-            src="/assets/images/logo.svg"
-            alt="Books Logo"
-            width={30}
-            height={30}
-            className="object-contain"
-            /> */}
             <p className="logo_text">NICER CAVES</p>
         </Link>
         <div className="flex gap-3 md:gap-5">
@@ -62,10 +55,6 @@ const Nav = () => {
                     <Link href="/article-dashboard" className="black_btn">
                         Manage Post
                     </Link>
-                    {/* 
-                    <Link href="/sample-status" className="black_btn">
-                        Sample Status
-                    </Link> */}
                 </div>
             ) : (
                 <>
@@ -138,14 +127,6 @@ const Nav = () => {
                             >
                                 My Profile
                             </Link>
-
-                            {/* <Link 
-                                href="/create-post"
-                                className="dropdown_link"
-                                onClick={()=> setToggleDropdown(false)}
-                            >
-                                Create Post
-                            </Link> */}
 
                             <button
                                 type="button"

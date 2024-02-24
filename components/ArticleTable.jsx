@@ -2,6 +2,7 @@ import Pagination from "@components/Pagination";
 import Link from "next/link";
 import Image from "next/image";
 import Search from "@components/Search";
+import styles from "@components/entries/entries.module.css";
 import { fetchArticles } from "@lib/data";
 
 const ArticleTable = async (searchParams) => {
@@ -14,21 +15,21 @@ const ArticleTable = async (searchParams) => {
   return (
     <section className="w-full flex-center flex-col">
       <div >
-        <div >
+        <div className={styles.top}>
           <Search placeholder="Search for an article..." />
           <br/>
           <Link href="/create-post">
-            <button >Add New</button>
+            <button  className={styles.addButton}>Add New</button>
           </Link>
         </div>
         <br/>
         <table className="table-auto border-separate border-spacing-10">
           <thead>
             <tr>
-              <td>Title</td>
-              <td>Author</td>
-              <td>Created At</td>
-              <td>Action</td>
+              <td className="font-bold">Title</td>
+              <td className="font-bold">Author</td>
+              <td className="font-bold">Created At</td>
+              <td className="font-bold">Action</td>
             </tr>
           </thead>
           <tbody>

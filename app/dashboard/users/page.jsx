@@ -16,8 +16,8 @@ const UsersPage = async ({ searchParams }) => {
       <table className={styles.table}>
         <thead>
           <tr>
-            <td>Name</td>
-            <td>Email</td>
+            <td className="font-bold">Name</td>
+            <td className="font-bold">Email</td>
           </tr>
         </thead>
         <tbody>

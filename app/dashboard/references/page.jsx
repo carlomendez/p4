@@ -17,11 +17,11 @@ const ReferencesPage = async ({ searchParams }) => {
       <table className={styles.table}>
         <thead>
           <tr>
-            <td>Author</td>
-            <td>Article Title</td>
-            <td>Publisher</td>
-            <td>Publication Date</td>
-            <td>Action</td>
+            <td className="font-bold">Author</td>
+            <td className="font-bold">Article Title</td>
+            <td className="font-bold">Publisher</td>
+            <td className="font-bold">Publication Date</td>
+            <td className="font-bold">Action</td>
           </tr>
         </thead>
         <tbody>
