@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react"
 
 const EditTaxonomy = ({
     id, 
+    specimenId,
     strain, 
     subspecies, 
     species, 
@@ -29,6 +30,7 @@ const EditTaxonomy = ({
         <form action={updateTaxonomy} className={styles.form}>
           <input type="hidden" name="userId" value={session?.user.id} />
           <input type="hidden" name="id" value={id} />
+          <input type="hidden" name="specimenId" value={specimenId} />
           <label>Strain</label>
             <input name="strain" placeholder={strain} style={{width: "100%"}} />
           <label>Subspecies</label>

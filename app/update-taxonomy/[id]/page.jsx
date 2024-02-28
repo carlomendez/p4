@@ -10,6 +10,7 @@ const EditTaxonomyPage = async ({ params }) => {
     <AuthChecker>
       <EditTaxonomy 
             id = {taxonomy.id}
+            specimenId = {taxonomy.specimenId}
             strain = {taxonomy.strain}
             subspecies = {taxonomy.subspecies}
             species = {taxonomy.species}
