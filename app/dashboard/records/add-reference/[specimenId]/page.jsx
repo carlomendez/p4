@@ -4,7 +4,7 @@ import { addReference } from "@lib/actions";
 import styles from "@components/entries/addEntry/addEntry.module.css";
 import { useSession } from "next-auth/react"
 
-const AddReferencePage = async ({ params }) => {
+const AddReferencePage = ({ params }) => {
   const { data: session } = useSession();
   const { specimenId } = params;
   return (

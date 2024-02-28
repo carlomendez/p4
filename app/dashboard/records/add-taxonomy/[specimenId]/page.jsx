@@ -4,7 +4,7 @@ import { addTaxonomy } from "@lib/actions";
 import styles from "@components/entries/addEntry/addEntry.module.css";
 import { useSession } from "next-auth/react"
 
-const AddTaxonomyPage = async ({ params }) => {
+const AddTaxonomyPage = ({ params }) => {
   const { data: session } = useSession();
   const { specimenId } = params;
   return (

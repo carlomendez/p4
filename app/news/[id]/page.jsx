@@ -13,7 +13,7 @@ const SinglePage = async ({ params }) => {
       <div >
         <div >
           <div >
-            <h1 className="head_text font-extrabold">{article?.title}</h1>
+            <h1 className="head_text font-extrabold mb-8">{article?.title}</h1>
               <div >
                 <span >{article.author} -</span>
                 <span >
