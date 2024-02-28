@@ -10,6 +10,7 @@ const EditReferencePage = async ({ params }) => {
     <AuthChecker>
       <EditReference
             id = {reference.id}
+            specimenId = {reference.specimenId}
             author = {reference.author} 
             sourceTitle = {reference.sourceTitle}
             articleTitle = {reference.articleTitle}

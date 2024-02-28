@@ -8,6 +8,7 @@ import { useState } from "react";
 
 const EditReference = ({
     id, 
+    specimenId,
     author, 
     sourceTitle, 
     articleTitle, 
@@ -59,6 +60,7 @@ const EditReference = ({
         <form action={updateReference} className={styles.form}>
         <input type="hidden" name="id" value={id} />
         <input type="hidden" name="userId" value={session?.user.id} />
+        <input type="hidden" name="specimenId" value={specimenId} />
         <label>{`Author/s`}</label>
             <textarea name="author" placeholder={author} style={{width: "100%"}} />
         <label>Title of Publication or Website</label>
