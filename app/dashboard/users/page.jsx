@@ -2,6 +2,7 @@ import { fetchUsers } from "@lib/data";
 import styles from "@components/entries/entries.module.css";
 import Search from "@components/Search";
 import Pagination from "@components/Pagination";
+import { admins, editors } from "@lib/roles";
 
 const UsersPage = async ({ searchParams }) => {
   const q = searchParams?.q || "";
@@ -18,6 +19,7 @@ const UsersPage = async ({ searchParams }) => {
           <tr>
             <td className="font-bold">Name</td>
             <td className="font-bold">Email</td>
+            <td className="font-bold">Role</td>
           </tr>
         </thead>
         <tbody>
@@ -29,6 +31,8 @@ const UsersPage = async ({ searchParams }) => {
                 </div>
               </td>
               <td>{user.email}</td>
+              {(admins.includes(user?.email)) && <td>administrator</td>}
+              {(editors.includes(user?.email)) && <td>editor</td>}
             </tr>
           ))}
         </tbody>
